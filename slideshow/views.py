@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 import logging
 import json
+from . import location_service
 
 def index(request):
     request_body = request.body
@@ -9,4 +10,6 @@ def index(request):
     logger = logging.getLogger("general")
     logger.info(body_dict["property"])
 
-    return HttpResponse("Hello, world.")
+    location_result = location_service.get_location_name()
+
+    return HttpResponse(location_result)

@@ -9,6 +9,4 @@ open_weather_api_key = config["OPEN_WEATHER_API_KEY"]
 def get_location_name():
   # TODO: replace these query params with function's arguments
   response = requests.get(f'http://api.openweathermap.org/geo/1.0/reverse?lat=49.2827&lon=-123.1207&appid={open_weather_api_key}')
-  print(response.text)
-
-print(get_location_name())
+  return response.text
