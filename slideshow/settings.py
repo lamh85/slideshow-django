@@ -1,4 +1,6 @@
 import os
+from dotenv import dotenv_values
+dotenv_values = dotenv_values(".env")
 
 """
 Django settings for slideshow project.
@@ -77,8 +79,12 @@ WSGI_APPLICATION = 'slideshow.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': dotenv_values['DATABASE_NAME'],
+        'USER': dotenv_values['DATABASE_USER'],
+        'PASSWORD': dotenv_values['DATABASE_PASSWORD'],
+        'HOST': dotenv_values['DATABASE_HOST'],
+        'PORT': dotenv_values['DATABASE_PORT'],
     }
 }
 
